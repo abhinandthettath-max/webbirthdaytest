@@ -9,12 +9,18 @@ import FloatingHearts from "@/components/floating-hearts"
 import Loader from "@/components/Loader"
 import { MoveRight, PartyPopper } from "lucide-react"
 
+
+
 export default function Home() {
   const [isBirthday, setIsBirthday] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [bubbles, setBubbles] = useState([])
   const [showForYouBtn, setShowForYouBtn] = useState(false)
-  const birthdayDate = new Date("April 28, 2025") // Change this date accordingly
+  const birthdayDate = new Date(2026, 0, 17, 15, 59, 0)
+
+
+  //const birthdayDate = new Date("2025-04-23T22:03:00+05:30")
+
   const audioRef = useRef(null)
 
   // For testing
@@ -39,13 +45,14 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const generated = Array.from({ length: 20 }).map(() => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      color: ["bg-pink-300", "bg-purple-300", "bg-yellow-300", "bg-violet-300", "bg-rose-300"][Math.floor(Math.random() * 3)],
-      size: 16 + Math.floor(Math.random() * 8),
-      duration: 3 + Math.random() * 2,
-      delay: Math.random() * 5
+    // Generate bubbles only on client side to avoid hydration mismatch
+    const generated = Array.from({ length: 20 }).map((_, index) => ({
+      left: `${(index * 17 + 13) % 100}%`, // Deterministic positioning
+      top: `${(index * 23 + 7) % 100}%`,
+      color: ["bg-pink-300", "bg-purple-300", "bg-yellow-300", "bg-violet-300", "bg-rose-300"][index % 5],
+      size: 16 + (index % 8),
+      duration: 3 + (index % 3),
+      delay: (index % 5)
     }))
     setBubbles(generated)
   }, [])
@@ -74,9 +81,15 @@ export default function Home() {
             {isBirthday ? (
               <BirthdayCelebration key="celebration" />
             ) : (
-              <Countdown key="countdown" targetDate={birthdayDate} onCountdownEnd={() => setShowForYouBtn(true)} />
+              <Countdown
+                key="countdown"
+                targetDate={birthdayDate}
+                onCountdownEnd={() => setShowForYouBtn(true)}
+              />
             )}
           </AnimatePresence>
+
+
         </motion.div>
       </motion.div>
 

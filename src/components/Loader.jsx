@@ -50,10 +50,10 @@ function Loader() {
             ) : (
               <Heart
                 className={`w-${4 + (i % 4)} h-${4 + (i % 4)} ${i % 3 === 0
-                    ? "text-pink-300"
-                    : i % 3 === 1
-                      ? "text-pink-400"
-                      : "text-purple-300"
+                  ? "text-pink-300"
+                  : i % 3 === 1
+                    ? "text-pink-400"
+                    : "text-purple-300"
                   } ${i % 2 === 0 ? "fill-pink-100" : "fill-pink-200"} opacity-70`}
               />
             )}
