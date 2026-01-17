@@ -148,46 +148,60 @@ export default function OptionAPage() {
                 </div>
             </div>
 
-            {/* Mobile View - Single Page */}
-            <div className="md:hidden relative z-10 w-full h-[95vh] flex items-center justify-center">
-                {/* Left Navigation Arrow */}
-                <motion.button
-                    onClick={prevMobilePage}
-                    className="absolute left-4 p-2 rounded-full bg-pink-100 hover:bg-pink-200 transition-colors z-20"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                >
-                    <ChevronLeft className="w-5 h-5 text-pink-600" />
-                </motion.button>
+            {/* Mobile View - Full Screen Single Page */}
+            <div className="md:hidden relative z-10 w-full h-screen flex flex-col">
+                {/* Mobile Header */}
+                <div className="flex items-center justify-between p-3 bg-white bg-opacity-90 backdrop-blur-sm border-b border-pink-200">
+                    <motion.button
+                        onClick={() => router.back()}
+                        className="p-2 rounded-full bg-pink-100 hover:bg-pink-200 transition-colors"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                    >
+                        <ArrowLeft className="w-5 h-5 text-pink-600" />
+                    </motion.button>
 
-                {/* Single Newspaper Page */}
-                <motion.div
-                    key={`mobile-${currentPage}`}
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="bg-white shadow-2xl rounded-lg overflow-hidden mx-8"
-                    style={{ height: '85vh', aspectRatio: '3/4' }}
-                >
-                    <img
-                        src={newspaperPages[currentPage]}
-                        alt={`Newspaper page ${currentPage + 1}`}
-                        className="w-full h-full object-cover"
-                    />
-                </motion.div>
+                    <h1 className="text-lg font-bold text-pink-600">Breaking News</h1>
 
-                {/* Right Navigation Arrow */}
-                <motion.button
-                    onClick={nextMobilePage}
-                    className="absolute right-4 p-2 rounded-full bg-pink-100 hover:bg-pink-200 transition-colors z-20"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                >
-                    <ChevronRight className="w-5 h-5 text-pink-600" />
-                </motion.button>
+                    <div className="flex gap-2">
+                        <motion.button
+                            onClick={prevMobilePage}
+                            className="p-2 rounded-full bg-pink-100 hover:bg-pink-200 transition-colors"
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
+                            <ChevronLeft className="w-4 h-4 text-pink-600" />
+                        </motion.button>
+                        <motion.button
+                            onClick={nextMobilePage}
+                            className="p-2 rounded-full bg-pink-100 hover:bg-pink-200 transition-colors"
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
+                            <ChevronRight className="w-4 h-4 text-pink-600" />
+                        </motion.button>
+                    </div>
+                </div>
+
+                {/* Mobile Newspaper Container - Full Width & Height */}
+                <div className="flex-1 flex items-center justify-center p-2 overflow-hidden">
+                    <motion.div
+                        key={`mobile-${currentPage}`}
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className="w-full h-full bg-white shadow-lg rounded-lg overflow-hidden"
+                    >
+                        <img
+                            src={newspaperPages[currentPage]}
+                            alt={`Newspaper page ${currentPage + 1}`}
+                            className="w-full h-full object-contain bg-white"
+                        />
+                    </motion.div>
+                </div>
 
                 {/* Mobile Page Indicator */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                <div className="flex justify-center items-center gap-2 p-3 bg-white bg-opacity-90 backdrop-blur-sm border-t border-pink-200">
                     {newspaperPages.map((_, i) => (
                         <div
                             key={i}
@@ -195,6 +209,9 @@ export default function OptionAPage() {
                                 }`}
                         />
                     ))}
+                    <span className="ml-2 text-sm text-purple-700 font-medium">
+                        {currentPage + 1} of {newspaperPages.length}
+                    </span>
                 </div>
             </div>
         </main>

@@ -72,9 +72,9 @@ export default function Home() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative z-10 w-full max-w-3xl mx-auto"
+        className="relative z-10 w-full max-w-3xl mx-auto px-2 sm:px-4"
       >
-        <motion.div className="bg-white bg-opacity-80 backdrop-blur-sm rounded-3xl shadow-xl shadow-rose-100 p-8 border-2 border-rose-200"
+        <motion.div className="bg-white bg-opacity-80 backdrop-blur-sm rounded-3xl shadow-xl shadow-rose-100 p-4 sm:p-8 border-2 border-rose-200"
           initial={{ scale: 0.9 }}
           animate={{ scale: 1 }}>
           <AnimatePresence mode="wait">

@@ -95,15 +95,15 @@ export default function MenuPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="relative z-10 w-full max-w-4xl mx-auto"
+                className="relative z-10 w-full max-w-4xl mx-auto px-2 sm:px-4"
             >
-                <div className="bg-white bg-opacity-80 backdrop-blur-sm rounded-3xl shadow-xl shadow-rose-100 p-8 border-2 border-rose-200">
+                <div className="bg-white bg-opacity-80 backdrop-blur-sm rounded-3xl shadow-xl shadow-rose-100 p-4 sm:p-8 border-2 border-rose-200">
 
                     {/* Header */}
-                    <div className="text-center mb-8">
+                    <div className="text-center mb-6 sm:mb-8">
                         <motion.button
                             onClick={() => router.back()}
-                            className="absolute top-6 left-6 p-2 rounded-full bg-pink-100 hover:bg-pink-200 transition-colors"
+                            className="absolute top-4 left-4 sm:top-6 sm:left-6 p-2 rounded-full bg-pink-100 hover:bg-pink-200 transition-colors"
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                         >
