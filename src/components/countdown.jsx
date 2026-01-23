@@ -76,7 +76,7 @@ export default function Countdown({ targetDate, onCountdownEnd }) {
             </motion.div>
           ))
         ) : (
-          <p className="text-2xl text-pink-600 font-bold">It's time!</p>
+          <p className="text-2xl text-pink-600 font-bold">Happy Birthday Honey ✨🎉✨</p>
         )}
       </div>
 
@@ -87,7 +87,7 @@ export default function Countdown({ targetDate, onCountdownEnd }) {
         transition={{ delay: 0.5 }}
       >
         <p className="text-lg text-purple-700 mb-4">
-          Just a little more... A simple Treat For My Love❤️
+          Here, A simple Treat For My Love❤️
         </p>
 
         <div className="flex justify-center space-x-2">
